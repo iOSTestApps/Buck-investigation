@@ -1,0 +1,21 @@
+apple_bundle(
+  name = 'BuddybuildSampleApp',
+  binary = ':BuddybuildSampleAppBinary',
+  extension = 'app',
+  info_plist = 'Info.plist'
+)
+
+apple_binary(
+    name = "BuddybuildSampleAppBinary",
+    preprocessor_flags = ['-fobjc-arc', '-Wno-objc-designated-initializers'],
+    headers = glob([
+      '*.h',
+    ]),
+    srcs = glob([
+      '*.m',
+    ]),
+    frameworks = [
+      '$SDKROOT/System/Library/Frameworks/UIKit.framework',
+      '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+    ]
+)
